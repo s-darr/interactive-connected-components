@@ -24,27 +24,21 @@ func main() {
 		
 	}
 
-	// Create a new Fyne app
 	myApp := app.New()
-	myWindow := myApp.NewWindow("Interactive Grid Visualization")
-
-	
+	myWindow := myApp.NewWindow("Interactive Visualisation of Connected Components")
 	windowSize := 600
 	myWindow.Resize(fyne.NewSize(float32(windowSize), float32(windowSize)))
 
-	// Create a label to show the result of BFSConnectedComponents
 	resultLabel := widget.NewLabel(fmt.Sprintf("Largest Connected Component: %d", 0)) // Initial grid is 0
-
 	rows := len(grid)
-	cellSize := windowSize / rows
-
+	cellSize := float32(windowSize / rows)
 	gridContainer := container.NewGridWithRows(rows)
 
 	for rowIndex, row := range grid {
 		for colIndex := range row {
 			cellValue := &grid[rowIndex][colIndex]
 			rect := canvas.NewRectangle(color.NRGBA{R: 0, G: 0, B: 255, A: 255}) // // All blue to begin with
-			rect.SetMinSize(fyne.NewSize(float32(cellSize), float32(cellSize)))
+			rect.SetMinSize(fyne.NewSize(cellSize, cellSize))
 
 			clickableRectangle := &ClickableRectangle{
 				rect: rect,
@@ -58,7 +52,6 @@ func main() {
 			gridContainer.Add(clickableRectangle)
 		}
 	}
-
 
 	content := container.NewVBox(resultLabel, gridContainer)
 	myWindow.SetContent(content)
@@ -96,11 +89,7 @@ func (c *ClickableRectangle) Tapped(_ *fyne.PointEvent) {
     }
 
     c.Refresh()
-
-    
     maxRegion := algorithms.DFSConnectedComponents(c.grid)
-
-   
     c.resultLabel.SetText(fmt.Sprintf("Largest Connected Component: %d", maxRegion))
 }
 

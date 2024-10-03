@@ -7,3 +7,4 @@ var Directions = [][]int{
     {0, -1},  // Left
     {0, 1},   // Right
 }
+
