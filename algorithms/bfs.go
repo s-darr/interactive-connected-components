@@ -18,6 +18,7 @@ func BFSConnectedComponents(matrix [][]int) int {
             }
         }
     }
+	
     return maxRegion
 }
 

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"connected-components/algorithms"
 	"fmt"
 	"image/color"
 
@@ -32,7 +33,7 @@ func main() {
 	myWindow.Resize(fyne.NewSize(float32(windowSize), float32(windowSize)))
 
 	// Create a label to show the result of BFSConnectedComponents
-	resultLabel := widget.NewLabel(fmt.Sprintf("Largest Connected Component: %d", 0))
+	resultLabel := widget.NewLabel(fmt.Sprintf("Largest Connected Component: %d", 0)) // Initial grid is 0
 
 	rows := len(grid)
 	cellSize := windowSize / rows
@@ -82,23 +83,25 @@ func (c *ClickableRectangle) CreateRenderer() fyne.WidgetRenderer {
 }
 
 func (c *ClickableRectangle) Tapped(_ *fyne.PointEvent) {
-	fmt.Println(*c.cellValue)
     if *c.cellValue == 1 {
         *c.cellValue = 0
         c.grid[c.rowIndex][c.colIndex] = 0
+
         c.rect.FillColor = color.NRGBA{R: 0, G: 0, B: 255, A: 255} // Blue for water
     } else {
         *c.cellValue = 1
-		
         c.grid[c.rowIndex][c.colIndex] = 1
+
         c.rect.FillColor = color.NRGBA{R: 0, G: 128, B: 0, A: 255} // Green for land
     }
-	
 
-	c.Refresh()
-	
+    c.Refresh()
 
- 
+    
+    maxRegion := algorithms.DFSConnectedComponents(c.grid)
+
+   
+    c.resultLabel.SetText(fmt.Sprintf("Largest Connected Component: %d", maxRegion))
 }
 
 
