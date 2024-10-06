@@ -8,3 +8,9 @@ var Directions = [][]int{
     {0, 1},   // Right
 }
 
+func Max(a, b int) int {
+    if a > b {
+        return a
+    }
+    return b
+}

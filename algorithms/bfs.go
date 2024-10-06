@@ -12,9 +12,7 @@ func BFSConnectedComponents(matrix [][]int) int {
         for col := 0; col < len(matrix[row]); col++ {
             if matrix[row][col] == 1 {
                 size := getRegionSizeBFS(matrix, row, col)
-                if size > maxRegion {
-                    maxRegion = size
-                }
+				maxRegion = Max(size, maxRegion)
             }
         }
     }
