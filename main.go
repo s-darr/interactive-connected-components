@@ -14,13 +14,15 @@ import (
 
 func main() {
 	grid := [][]int{
-		{0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0},
 		
 	}
 
@@ -89,7 +91,7 @@ func (c *ClickableRectangle) Tapped(_ *fyne.PointEvent) {
     }
 
     c.Refresh()
-    maxRegion := algorithms.DFSConnectedComponents(c.grid)
+    maxRegion := algorithms.BFSConnectedComponents(c.grid)
     c.resultLabel.SetText(fmt.Sprintf("Largest Connected Component: %d", maxRegion))
 }
 
