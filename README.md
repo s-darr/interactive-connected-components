@@ -24,3 +24,7 @@ This problem is solved using two algorithms:
 
 - **Golang**: You can download from [https://golang.org/dl/](https://golang.org/dl/).
 - **Fyne**: You can download from [https://docs.fyne.io/started/]. Follow the instructions to install any prerequisites if needed.
+
+```bash
+   go run main.go
+```
