@@ -2,6 +2,8 @@
 
 This project demonstrates the use of algorithms like **Union-Find**, **Breadth-First Search (BFS)** and **Depth-First Search (DFS)** to visualise the **largest connected component** in a grid, where each cell can either represent **land (1)** or **water (0)**.
 
+![Grid Example](./images/examplegrid.png)
+
 ## Introduction
 
 In this project, we have an interactive grid where each cell can either be land (`1`) or water (`0`). The goal is to visualise the largest connected component dynamically as the user toggles between land and water cells. A land cell is considered connected with land cells that are adjacent (not connected diagonally).
