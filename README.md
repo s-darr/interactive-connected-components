@@ -28,3 +28,11 @@ This problem is solved using two algorithms:
 ```bash
    go run main.go
 ```
+
+## To-do
+
+Features for future improvement.
+
+- Use union-find algorithm to efficiently calculate largest connected component
+- Allow for diagonal connections or ability to resize the grid on UI
+- Implement 3-D version of this problem
